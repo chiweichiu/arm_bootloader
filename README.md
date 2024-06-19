@@ -34,7 +34,7 @@
 - bit7 disable IRQ
 - bit6 disable FIQ
 - 切換mode會將CPSR備份到S(save)PSR (也要備份藍色r0-r7部分)
-![alt condition_flag](https://github.com/chiweichiu/arm_bootloader/blob/main/utils/condition_flag.jpg) <br>
+![alt condition_flag](https://github.com/chiweichiu/arm_bootloader/blob/main/utils/condtion_flag.jpg) <br>
 - suffix : ADD r0,r1,r2 -> ADDNE ADD r0,r1,r2 (depend on前一個指令運算結果)(指令密度更高) 
 
 
