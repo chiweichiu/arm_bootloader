@@ -40,7 +40,7 @@
 - [arm_tutorial/BL/ex_1.s](https://github.com/chiweichiu/arm_bootloader/blob/main/arm_tutoial/BL/ex_1.s)
 - BL: branch with Link : 將返回address存到link register r14
 ![alt bl_example](https://github.com/chiweichiu/arm_bootloader/blob/main/utils/bl_example.jpg) <br>  
-- arm_tutorial/ALMCops/ex_2.s
+- [arm_tutorial/ALMCops/ex_2.s](https://github.com/chiweichiu/arm_bootloader/blob/main/arm_tutoial/ALMCops/ex_2.s)
 - LDR r0,=0xff00ff00 => 將r0設定為0xff00ff00, 若沒有=表示要從記憶體位址0xff00ff00撈資料給r0
 
 
