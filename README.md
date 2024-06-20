@@ -23,7 +23,7 @@
 - 透過exception進入特權模式, 有些指令只有在特權模式才能執行
 - system call(如fork)即是user mode切到SVC mode
 - 不同mode看到不同register bank 
-![alt register_bacnk](https://github.com/chiweichiu/arm_bootloader/blob/main/utils/register_bacnk.jpg) <br>
+![alt register_bank](https://github.com/chiweichiu/arm_bootloader/blob/main/utils/register_bank.jpg) <br>
 - 31 general porpose registers + 6 stats registers
 - r14 link register, 紀錄function call跳躍時要返回的指令位址
 - r15 PC : 所有模式共用
@@ -37,10 +37,10 @@
 ![alt condition_flag](https://github.com/chiweichiu/arm_bootloader/blob/main/utils/condtion_flag.jpg) <br>
 - suffix : ADD r0,r1,r2 -> ADDNE ADD r0,r1,r2 (depend on前一個指令運算結果)(指令密度更高)
 > Arm tutorial
-- arm_tutorial/BL/ex_1.s
+- [arm_tutorial/BL/ex_1.s](https://github.com/chiweichiu/arm_bootloader/blob/main/arm_tutoial/BL/ex_1.s)
 - BL: branch with Link : 將返回address存到link register r14
 ![alt bl_example](https://github.com/chiweichiu/arm_bootloader/blob/main/utils/bl_example.jpg) <br>  
-- arm_tutorial/ALMCops/ex_2.s
+- [arm_tutorial/ALMCops/ex_2.s](https://github.com/chiweichiu/arm_bootloader/blob/main/arm_tutoial/ALMCops/ex_2.s)
 - LDR r0,=0xff00ff00 => 將r0設定為0xff00ff00, 若沒有=表示要從記憶體位址0xff00ff00撈資料給r0
 
 
