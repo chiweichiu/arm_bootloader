@@ -23,7 +23,7 @@
 - 透過exception進入特權模式, 有些指令只有在特權模式才能執行
 - system call(如fork)即是user mode切到SVC mode
 - 不同mode看到不同register bank 
-![alt register_bacnk](https://github.com/chiweichiu/arm_bootloader/blob/main/utils/register_bacnk.jpg) <br>
+![alt register_bank](https://github.com/chiweichiu/arm_bootloader/blob/main/utils/register_bank.jpg) <br>
 - 31 general porpose registers + 6 stats registers
 - r14 link register, 紀錄function call跳躍時要返回的指令位址
 - r15 PC : 所有模式共用
