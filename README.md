@@ -50,6 +50,7 @@
 - 因為有! 所以r13會變 變成備份r0內容的地址 所以r13=0xFFEC
 - 接著故意把r0-r3改成0x10-0x40 呼叫func2 會備份func1的0x10-0x40到memory
 - 最後執行LDMFD 會pop 0x1-0x4以及返回地址到原start的樣子
+- 優點是可以一次搬運多個register內容到memory
 
 
 
