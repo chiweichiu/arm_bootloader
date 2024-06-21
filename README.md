@@ -1,5 +1,5 @@
 # arm_bootloader
-> Soc baisc
+> Soc basic
 ![alt soc_basic](https://github.com/chiweichiu/arm_bootloader/blob/main/utils/soc_basic.jpg) <br>
 - arm需要透過dram controller來控制外部sdram來了解其狀態
 - 資料放nor flash因為不需要init就可以access data, boot code放這裡
@@ -42,6 +42,14 @@
 ![alt bl_example](https://github.com/chiweichiu/arm_bootloader/blob/main/utils/bl_example.jpg) <br>  
 - [arm_tutorial/ALMCops/ex_2.s](https://github.com/chiweichiu/arm_bootloader/blob/main/arm_tutoial/ALMCops/ex_2.s)
 - LDR r0,=0xff00ff00 => 將r0設定為0xff00ff00, 若沒有=表示要從記憶體位址0xff00ff00撈資料給r0
+- [arm_tutorial/STMFD/ex_2.s](https://github.com/chiweichiu/arm_bootloader/blob/main/arm_tutoial/STMFD/ex_2.s)
+![alt stmfd](https://github.com/chiweichiu/arm_bootloader/blob/main/utils/stmfd.jpg) <br>  
+- r13 stack pointer(sp)位址設定為0x100000
+- 跳到func1執行STMFD r13!,[r0-r3,r14] 將r0-r3及r14(返回位址)備份到memory sp指定位址
+- sp是往底位址放且放置順序為r14 r3 r2 r1 r0 所以r14內容被放到0xFFFC
+- 因為有! 所以r13會變 變成備份r0內容的地址 所以r13=0xFFEC
+- 接著故意把r0-r3改成0x10-0x40 呼叫func2 會備份func1的0x10-0x40到memory
+- 最後執行LDMFD 會pop 0x1-0x4以及返回地址到原start的樣子
 
 
 
