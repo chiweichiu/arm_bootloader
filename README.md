@@ -1,10 +1,10 @@
 # arm_bootloader
-> Soc basic
+## Soc basic
 ![alt soc_basic](https://github.com/chiweichiu/arm_bootloader/blob/main/utils/soc_basic.jpg) <br>
 - arm需要透過dram controller來控制外部sdram來了解其狀態
 - 資料放nor flash因為不需要init就可以access data, boot code放這裡
 - ISA : cpu硬體的抽象, 包含(1)ALU (2)load/store stack push/pop (3)control flow
-> bootloader工作
+## bootloader工作
 - 關閉中斷
 - 關閉watch dog
 - 驅動SDRAM
@@ -12,12 +12,12 @@
 - stack setup
 - init nessary 周邊IO device
 - 執行程式 可能是(1) diag (2) update flash (3) start kernel
-> ISA
+## ISA
 - Raspi 3 = cortex-A53 = arm v8
 - arm v8 support 64 bit
-> Processor Core
+## Processor Core
 - 主要(1) datapath (register ALU) (2) decoder (instruction from RAM)
-> ARM
+## ARM
 - 2 state (1) arm state (32bit) (2) thumb state (16bit) (提高程式密度) (3) BX指令切換
 ![alt arm_processor_mode](https://github.com/chiweichiu/arm_bootloader/blob/main/utils/arm_processor_mode.jpg) <br>
 - 透過exception進入特權模式, 有些指令只有在特權模式才能執行
@@ -36,13 +36,13 @@
 - 切換mode會將CPSR備份到S(save)PSR (也要備份藍色r0-r7部分)
 ![alt condition_flag](https://github.com/chiweichiu/arm_bootloader/blob/main/utils/condtion_flag.jpg) <br>
 - suffix : ADD r0,r1,r2 -> ADDNE ADD r0,r1,r2 (depend on前一個指令運算結果)(指令密度更高)
-> Arm tutorial
-- [arm_tutorial/BL/ex_1.s](https://github.com/chiweichiu/arm_bootloader/blob/main/arm_tutoial/BL/ex_1.s)
+# Arm tutorial
+## [arm_tutorial/BL/ex_1.s](https://github.com/chiweichiu/arm_bootloader/blob/main/arm_tutoial/BL/ex_1.s)
 - BL: branch with Link : 將返回address存到link register r14
 ![alt bl_example](https://github.com/chiweichiu/arm_bootloader/blob/main/utils/bl_example.jpg) <br>  
 - [arm_tutorial/ALMCops/ex_2.s](https://github.com/chiweichiu/arm_bootloader/blob/main/arm_tutoial/ALMCops/ex_2.s)
 - LDR r0,=0xff00ff00 => 將r0設定為0xff00ff00, 若沒有=表示要從記憶體位址0xff00ff00撈資料給r0
-- [arm_tutorial/STMFD/ex_2.s](https://github.com/chiweichiu/arm_bootloader/blob/main/arm_tutoial/STMFD/ex_2.s)
+## [arm_tutorial/STMFD/ex_2.s](https://github.com/chiweichiu/arm_bootloader/blob/main/arm_tutoial/STMFD/ex_2.s)
 ![alt stmfd](https://github.com/chiweichiu/arm_bootloader/blob/main/utils/stmfd.jpg) <br>  
 - r13 stack pointer(sp)位址設定為0x100000
 - 跳到func1執行STMFD r13!,[r0-r3,r14] 將r0-r3及r14(返回位址)備份到memory sp指定位址
@@ -51,6 +51,10 @@
 - 接著故意把r0-r3改成0x10-0x40 呼叫func2 會備份func1的0x10-0x40到memory
 - 最後執行LDMFD 會pop 0x1-0x4以及返回地址到原start的樣子
 - 優點是可以一次搬運多個register內容到memory
+## [arm_tutorial/MSR/ex_3.s](https://github.com/chiweichiu/arm_bootloader/blob/main/arm_tutoial/MSR/ex_3.s)
+![alt msr](https://github.com/chiweichiu/arm_bootloader/blob/main/utils/MSR.jpg) <br>  
+- MSR/MRS指令切換到IRQ模式
+- 用途是在init時針對不同模式擁有的sp lr做初始設定
 
 
 
